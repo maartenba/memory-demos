@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClrMd.Target", "ClrMd.Target\ClrMd.Target.csproj", "{E979C737-DEAD-43CD-B5A8-59E538F1CF34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClrMd.Explorer", "ClrMd.Explorer\ClrMd.Explorer.csproj", "{A370D1FA-C986-41F2-9AE3-5E9FD4A06DDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E979C737-DEAD-43CD-B5A8-59E538F1CF34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E979C737-DEAD-43CD-B5A8-59E538F1CF34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E979C737-DEAD-43CD-B5A8-59E538F1CF34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E979C737-DEAD-43CD-B5A8-59E538F1CF34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A370D1FA-C986-41F2-9AE3-5E9FD4A06DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A370D1FA-C986-41F2-9AE3-5E9FD4A06DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A370D1FA-C986-41F2-9AE3-5E9FD4A06DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A370D1FA-C986-41F2-9AE3-5E9FD4A06DDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
