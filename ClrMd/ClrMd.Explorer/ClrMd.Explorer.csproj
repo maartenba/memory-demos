@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClrHeapObject.cs" />
+    <Compile Include="GeekOut\DgmlNode.cs" />
+    <Compile Include="GeekOut\DgmlNodeLink.cs" />
+    <Compile Include="GeekOut\Dgml.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
