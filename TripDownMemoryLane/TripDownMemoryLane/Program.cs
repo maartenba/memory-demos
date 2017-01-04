@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TripDownMemoryLane.Demo01;
 using TripDownMemoryLane.Demo03;
+using TripDownMemoryLane.Demo04;
 
 namespace TripDownMemoryLane
 {
@@ -40,6 +41,11 @@ namespace TripDownMemoryLane
 
                 case "3-2":
                     demosToRun.Add(new BeersDemoOptimized());
+                    break;
+
+                case "4":
+                case "4-1":
+                    demosToRun.Add(new StringAllocationDemo());
                     break;
 
                 default:
