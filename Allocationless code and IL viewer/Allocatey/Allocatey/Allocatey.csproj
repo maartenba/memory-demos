@@ -51,6 +51,8 @@
     <Compile Include="CheckNopInDebugVsRelease.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Talk\Demo02_Random.cs" />
+    <Compile Include="Talk\Demo02_ValidateArgumentsDemo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
