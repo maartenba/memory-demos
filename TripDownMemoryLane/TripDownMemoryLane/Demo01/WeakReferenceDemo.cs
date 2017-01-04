@@ -38,7 +38,6 @@ namespace TripDownMemoryLane.Demo01
 
             // Collect another snapshot
             Console.WriteLine("Collect a snapshot, compare both snapshots. We should see new WeakReference<Data> being generated.");
-            Console.ReadLine();
         }
     }
 }

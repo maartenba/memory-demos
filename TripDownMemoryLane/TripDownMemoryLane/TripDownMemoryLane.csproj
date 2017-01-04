@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
@@ -59,12 +63,18 @@
     <Compile Include="Demo01\WeakReferenceDemo.cs" />
     <Compile Include="Demo02\Demo02_Random.cs" />
     <Compile Include="Demo02\Demo02_ValidateArgumentsDemo.cs" />
+    <Compile Include="Demo03\BeerLoader.cs" />
+    <Compile Include="Demo03\BeersDemoOptimized.cs" />
+    <Compile Include="Demo03\BeersDemoUnoptimized.cs" />
     <Compile Include="Foo.cs" />
     <Compile Include="IDemo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Demo03\beers.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

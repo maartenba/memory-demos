@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TripDownMemoryLane.Demo01;
+using TripDownMemoryLane.Demo03;
 
 namespace TripDownMemoryLane
 {
@@ -18,6 +19,27 @@ namespace TripDownMemoryLane
                 case "1":
                     demosToRun.Add(new WeakReferenceDemo());
                     demosToRun.Add(new DisposeObjectsDemo());
+                    break;
+
+                case "1-1":
+                    demosToRun.Add(new WeakReferenceDemo());
+                    break;
+
+                case "1-2":
+                    demosToRun.Add(new DisposeObjectsDemo());
+                    break;
+
+                case "3":
+                    demosToRun.Add(new BeersDemoUnoptimized());
+                    demosToRun.Add(new BeersDemoOptimized());
+                    break;
+
+                case "3-1":
+                    demosToRun.Add(new BeersDemoUnoptimized());
+                    break;
+
+                case "3-2":
+                    demosToRun.Add(new BeersDemoOptimized());
                     break;
 
                 default:

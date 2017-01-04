@@ -21,7 +21,7 @@ namespace Allocatey
 
             using (var reader = new JsonTextReader(
                 new StreamReader(
-                    File.OpenRead("D:\\Google Drive\\Samples\\Allocationless code and IL viewer\\Allocatey\\beers.json"))))
+                    File.OpenRead("Demo03\\beers.json"))))
             {
                 while (reader.Read())
                 {
