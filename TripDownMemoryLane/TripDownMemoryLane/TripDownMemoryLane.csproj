@@ -57,6 +57,8 @@
     <Compile Include="Demo01\SampleDisposable.cs" />
     <Compile Include="Demo01\Cache.cs" />
     <Compile Include="Demo01\WeakReferenceDemo.cs" />
+    <Compile Include="Demo02\Demo02_Random.cs" />
+    <Compile Include="Demo02\Demo02_ValidateArgumentsDemo.cs" />
     <Compile Include="Foo.cs" />
     <Compile Include="IDemo.cs" />
     <Compile Include="Program.cs" />
@@ -65,9 +67,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Demo02\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
