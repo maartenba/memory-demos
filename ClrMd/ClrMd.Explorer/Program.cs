@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Xml;
-using ClrMd.Explorer.GeekOut;
 using Microsoft.Diagnostics.Runtime;
+using Microsoft.Msagl.Drawing;
+using Microsoft.Msagl.GraphViewerGdi;
 
 namespace ClrMd.Explorer
 {
@@ -200,7 +203,7 @@ namespace ClrMd.Explorer
 
         private static void DumpRetention(DataTarget dataTarget, ClrInfo clrVersion, ClrRuntime runtime, ClrAppDomain appDomain, ClrHeap heap, string targetType)
         {
-            var dgml = new Dgml();
+            var graph = new Graph();
 
             Console.WriteLine("## What's the retention path of the {0} object?", targetType);
             Console.WriteLine("");
@@ -233,10 +236,10 @@ namespace ClrMd.Explorer
 
                             Console.WriteLine("{0} {1} - {2} - {3} bytes", new string('+', depth++), address, t.Name, t.GetSize(address));
 
-                            dgml.AddNode(address.ToString(), string.Format("{0} ({1})", t.Name, address));
-                            if (previousAddress > 0)
+                            graph.AddNode(address.ToString()).LabelText = $"{t.Name} ({address})";
+                            if (previousAddress > 0 && !graph.Edges.Any(e => e.Source == previousAddress.ToString() && e.Target == address.ToString()))
                             {
-                                dgml.AddLink(previousAddress.ToString(), address.ToString());
+                                graph.AddEdge(previousAddress.ToString(), address.ToString());
                             }
                             previousAddress = address;
                         }
@@ -246,13 +249,16 @@ namespace ClrMd.Explorer
                 }
             }
 
-            using (var writer = new XmlTextWriter("retention.dgml", Encoding.UTF8))
-            {
-                dgml.WriteTo(writer);
-            }
-
             Console.ReadLine();
-            Process.Start("retention.dgml");
+
+            // Render graph
+            var width = 1600;
+            var renderer = new GraphRenderer(graph);
+            renderer.CalculateLayout();
+            var bitmap = new Bitmap(width, (int)(graph.Height * (width / graph.Width)), PixelFormat.Format32bppRgb);
+            renderer.Render(bitmap);
+            bitmap.Save("test.png");
+            Process.Start("test.png");
         }
 
         private static bool GetPathToObject(ClrHeap heap, ulong objectPointer, Stack<ulong> stack, HashSet<ulong> touchedObjects)

@@ -11,9 +11,10 @@ namespace ClrMd.Target
 
             Console.WriteLine(helloWorld);
 
+            Timer timer;
             using (Clock clock = new Clock())
             {
-                Timer timer = new Timer(clock.OnTick,
+                timer = new Timer(clock.OnTick,
                     null,
                     TimeSpan.FromSeconds(1),
                     TimeSpan.FromSeconds(1));
