@@ -30,6 +30,12 @@ local.properties
 
 
 #################
+## Rider
+#################
+.idea/
+
+
+#################
 ## Visual Studio
 #################
 
@@ -40,6 +46,7 @@ local.properties
 *.suo
 *.user
 *.sln.docstates
+.vs/
 
 # Build results
 
