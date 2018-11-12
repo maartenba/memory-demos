@@ -12,7 +12,7 @@ namespace TripDownMemoryLane.Demo03
             Console.ResetColor();
             Console.WriteLine("Attach the memory profiler, and load beers a number of times.");
 
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < 2; i++)
             {
                 BeerLoader.LoadBeersOptimized();
 
