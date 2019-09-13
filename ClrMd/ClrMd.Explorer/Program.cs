@@ -43,16 +43,15 @@ namespace ClrMd.Explorer
                 Console.ReadLine();
 
                 // Get heap
-                var heap = runtime.GetHeap();
-                if (heap.CanWalkHeap)
+                if (runtime.Heap.CanWalkHeap)
                 {
-                    DumpHeapObjects(dataTarget, clrVersion, runtime, appDomain, heap);
+                    DumpHeapObjects(dataTarget, clrVersion, runtime, appDomain, runtime.Heap);
                     Console.ReadLine();
 
-                    DumpStringDuplicates(dataTarget, clrVersion, runtime, appDomain, heap, top: 100);
+                    DumpStringDuplicates(dataTarget, clrVersion, runtime, appDomain, runtime.Heap, top: 100);
                     Console.ReadLine();
 
-                    DumpRetention(dataTarget, clrVersion, runtime, appDomain, heap, "ClrMd.Target.Clock");
+                    DumpRetention(dataTarget, clrVersion, runtime, appDomain, runtime.Heap, "ClrMd.Target.Clock");
                     Console.ReadLine();
                 }
             }
