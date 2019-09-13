@@ -10,7 +10,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TripDownMemoryLane</RootNamespace>
     <AssemblyName>TripDownMemoryLane</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <LangVersion>7.3</LangVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -35,8 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,6 +66,7 @@
     <Compile Include="Demo01\WeakReferenceDemo.cs" />
     <Compile Include="Demo02\Demo02_Random.cs" />
     <Compile Include="Demo02\Demo02_ValidateArgumentsDemo.cs" />
+    <Compile Include="Demo02\TupleVsValueTupleDemo.cs" />
     <Compile Include="Demo03\BeerLoader.cs" />
     <Compile Include="Demo03\BeersDemoOptimized.cs" />
     <Compile Include="Demo03\BeersDemoUnoptimized.cs" />

@@ -24,6 +24,7 @@ namespace TripDownMemoryLane.Demo02
         // 2.
         private static void ParamsArray()
         {
+            // Note: also show .NET 4.5 target fx
             ParamsArrayImpl();
         }
 
@@ -53,6 +54,13 @@ namespace TripDownMemoryLane.Demo02
             {
                 Task.Run(() => Console.WriteLine(s));
             }
+        }
+        
+        // 5.
+        private static void TupleVsValueTuple()
+        {
+            var tuple1 = new Tuple<string, string>("Hello", "World");
+            var tuple2 = new ValueTuple<string, string>("Hello", "World");
         }
     }
 }

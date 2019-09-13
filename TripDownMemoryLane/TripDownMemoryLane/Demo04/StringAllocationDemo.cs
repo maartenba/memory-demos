@@ -38,12 +38,12 @@ namespace TripDownMemoryLane.Demo04
 
             var b = "Hello, World!";
 
-            var c = httpClient.GetStringAsync("http://blog.maartenballiauw.be").Result;
+            var c = httpClient.GetStringAsync("https://blog.maartenballiauw.be").Result;
         }
 
         static void AllocateSomeStringDuplicates()
         {
-            var a = "http://blog.maartenballiauw.be";
+            var a = "https://blog.maartenballiauw.be";
             var stringList = new List<string>();
             for (int i = 0; i < 100; i++)
             {

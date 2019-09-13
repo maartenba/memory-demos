@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TripDownMemoryLane.Demo01;
+using TripDownMemoryLane.Demo02;
 using TripDownMemoryLane.Demo03;
 using TripDownMemoryLane.Demo04;
 
@@ -10,63 +12,49 @@ namespace TripDownMemoryLane
     {
         public static void Main(string[] args)
         {
-            var demosToRun = new List<IDemo>();
-
-            Console.Write("Which demo would you like to run? (enter a number) ");
-            var demoNumber = Console.ReadLine().TrimEnd('\r', 'n');
-
-            switch (demoNumber.ToLowerInvariant())
+            var availableDemos = new Dictionary<string, Type[]>
             {
-                case "1":
-                    demosToRun.Add(new WeakReferenceDemo());
-                    demosToRun.Add(new DisposeObjectsDemo());
-                    break;
+                {"1",   new[] {typeof(WeakReferenceDemo), typeof(DisposeObjectsDemo)}},
+                {"1-1", new[] {typeof(WeakReferenceDemo)}},
+                {"1-2", new[] {typeof(DisposeObjectsDemo)}},
+                {"2",   new[] {typeof(TupleVsValueTupleDemo)}},
+                {"3",   new[] {typeof(BeersDemoUnoptimized), typeof(BeersDemoOptimized)}},
+                {"3-1", new[] {typeof(BeersDemoUnoptimized)}},
+                {"3-2", new[] {typeof(BeersDemoOptimized)}},
+                {"4",   new[] {typeof(StringAllocationDemo)}}
+            };
 
-                case "1-1":
-                    demosToRun.Add(new WeakReferenceDemo());
-                    break;
-
-                case "1-2":
-                    demosToRun.Add(new DisposeObjectsDemo());
-                    break;
-
-                case "3":
-                    demosToRun.Add(new BeersDemoUnoptimized());
-                    demosToRun.Add(new BeersDemoOptimized());
-                    break;
-
-                case "3-1":
-                    demosToRun.Add(new BeersDemoUnoptimized());
-                    break;
-
-                case "3-2":
-                    demosToRun.Add(new BeersDemoOptimized());
-                    break;
-
-                case "4":
-                case "4-1":
-                    demosToRun.Add(new StringAllocationDemo());
-                    break;
-
-                default:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Unknown demo. Try restarting the application.");
-                    Console.ResetColor();
-                    Console.ReadLine();
-                    break;
+            Console.WriteLine("Available demo's:");
+            foreach (var keyValuePair in availableDemos)
+            {
+                Console.WriteLine(" * " + keyValuePair.Key + " - " + string.Join(", ", keyValuePair.Value.Select(t => t.Name)));
             }
 
-            foreach (var demo in demosToRun)
+            Console.Write("Which demo would you like to run? (enter a number) ");
+            var demoNumber = Console.ReadLine()?.TrimEnd('\r', 'n') ?? string.Empty;
+            if (availableDemos.TryGetValue(demoNumber, out var demosToRun))
             {
-                GC.Collect();
-                Console.Clear();
+                // Run and make sure to clean up
+                foreach (var demo in demosToRun)
+                {
+                    GC.Collect();
+                    Console.Clear();
 
-                demo.Run(args);
+                    ((IDemo)Activator.CreateInstance(demo)).Run(args);
 
-                Console.WriteLine();
-                Console.ResetColor();
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine("Press <enter> to continue.");
+                    Console.WriteLine();
+                    Console.ResetColor();
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine("Press <enter> to continue.");
+                    Console.ResetColor();
+                    Console.ReadLine();
+                }
+            }
+            else
+            {
+                // No can do!
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Unknown demo. Try restarting the application.");
                 Console.ResetColor();
                 Console.ReadLine();
             }
