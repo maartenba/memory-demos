@@ -2,21 +2,21 @@
 using System.Linq;
 using System.Xml;
 
-namespace ClrMd.Explorer.GeekOut
-{
-    public class Dgml
-    {
-        public List<DgmlNode> Nodes { get; }
-        public List<DgmlNodeLink> Links { get; }
+namespace ClrMd.Explorer.GeekOut;
 
-        public Dgml()
-        {
+public class Dgml
+{
+    public List<DgmlNode> Nodes { get; }
+    public List<DgmlNodeLink> Links { get; }
+
+    public Dgml()
+    {
             Nodes = new List<DgmlNode>();
             Links = new List<DgmlNodeLink>();
         }
 
-        public Dgml AddNode(string id, string label)
-        {
+    public Dgml AddNode(string id, string label)
+    {
             if (!Nodes.Any(node => node.Id == id))
             {
                 Nodes.Add(new DgmlNode
@@ -29,8 +29,8 @@ namespace ClrMd.Explorer.GeekOut
             return this;
         }
 
-        public Dgml AddLink(string source, string target)
-        {
+    public Dgml AddLink(string source, string target)
+    {
             Links.Add(new DgmlNodeLink
             {
                 Source = source,
@@ -40,8 +40,8 @@ namespace ClrMd.Explorer.GeekOut
             return this;
         }
 
-        public void WriteTo(XmlWriter writer)
-        {
+    public void WriteTo(XmlWriter writer)
+    {
             writer.WriteStartElement("DirectedGraph", "http://schemas.microsoft.com/vs/2009/dgml");
 
             writer.WriteStartElement("Nodes");
@@ -75,5 +75,4 @@ namespace ClrMd.Explorer.GeekOut
 
             writer.WriteEndElement();
         }
-    }
 }

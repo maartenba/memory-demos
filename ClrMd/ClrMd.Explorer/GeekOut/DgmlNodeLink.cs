@@ -1,8 +1,7 @@
-﻿namespace ClrMd.Explorer.GeekOut
+﻿namespace ClrMd.Explorer.GeekOut;
+
+public class DgmlNodeLink
 {
-    public class DgmlNodeLink
-    {
-        public string Source { get; set; }
-        public string Target { get; set; }
-    }
+    public string Source { get; set; }
+    public string Target { get; set; }
 }
