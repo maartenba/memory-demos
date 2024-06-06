@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Threading;
+using ExampleTestsWithDMU;
 using JetBrains.dotMemoryUnit;
 using Xunit;
 using Xunit.Abstractions;
 using Timer = System.Timers.Timer;
 
-namespace ExampleTestsWithDMU
+namespace TestsWithDMU
 {
     public class ClockFacts
     {
