@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TripDownMemoryLane.Demo01
+namespace TripDownMemoryLane.Demo01;
+
+public class Cache
 {
-    public class Cache
+    // Dictionary to contain the cache.
+    private static Dictionary<int, WeakReference<Data>> _cache;
+
+    // Track the number of times an object is regenerated.
+    private int regenCount = 0;
+
+    public Cache(int count)
     {
-        // Dictionary to contain the cache.
-        private static Dictionary<int, WeakReference<Data>> _cache;
-
-        // Track the number of times an object is regenerated.
-        private int regenCount = 0;
-
-        public Cache(int count)
-        {
             _cache = new Dictionary<int, WeakReference<Data>>();
 
             // Add objects with a short weak reference to the cache.
@@ -22,23 +22,23 @@ namespace TripDownMemoryLane.Demo01
             }
         }
 
-        // Number of items in the cache.
-        public int Count
-        {
-            get { return _cache.Count; }
-        }
+    // Number of items in the cache.
+    public int Count
+    {
+        get { return _cache.Count; }
+    }
 
-        // Number of times an object needs to be regenerated.
-        public int RegenerationCount
-        {
-            get { return regenCount; }
-        }
+    // Number of times an object needs to be regenerated.
+    public int RegenerationCount
+    {
+        get { return regenCount; }
+    }
 
-        // Retrieve a data object from the cache.
-        public Data this[int index]
+    // Retrieve a data object from the cache.
+    public Data this[int index]
+    {
+        get
         {
-            get
-            {
                 Data d;
                 if (!_cache[index].TryGetTarget(out d))
                 {
@@ -56,6 +56,5 @@ namespace TripDownMemoryLane.Demo01
 
                 return d;
             }
-        }
     }
 }

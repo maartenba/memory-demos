@@ -3,19 +3,19 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace TripDownMemoryLane.Demo03
-{
-    public static class BeerLoader
-    {
-        public static Dictionary<string, Dictionary<string, double>> Beers { get; private set; }
+namespace TripDownMemoryLane.Demo03;
 
-        static BeerLoader()
-        {
+public static class BeerLoader
+{
+    public static Dictionary<string, Dictionary<string, double>> Beers { get; private set; }
+
+    static BeerLoader()
+    {
             Beers = new Dictionary<string, Dictionary<string, double>>();
         }
 
-        public static void LoadBeersInsane()
-        {
+    public static void LoadBeersInsane()
+    {
             Beers = new Dictionary<string, Dictionary<string, double>>();
 
             var json = File.ReadAllText("Demo03\\beers.json"); // store all data once (string)
@@ -48,8 +48,8 @@ namespace TripDownMemoryLane.Demo03
             // string and JArray out of scope, memory traffic, expect a GC here...
         }
 
-        public static void LoadBeersUnoptimized()
-        {
+    public static void LoadBeersUnoptimized()
+    {
             Beers = new Dictionary<string, Dictionary<string, double>>();
 
             using (var reader = new JsonTextReader(new StreamReader(File.OpenRead("Demo03\\beers.json"))))
@@ -83,8 +83,8 @@ namespace TripDownMemoryLane.Demo03
             }
         }
 
-        public static void LoadBeersOptimized()
-        {
+    public static void LoadBeersOptimized()
+    {
             using (var reader = new JsonTextReader(new StreamReader(File.OpenRead("Demo03\\beers.json"))))
             {
                 while (reader.Read())
@@ -119,5 +119,4 @@ namespace TripDownMemoryLane.Demo03
                 }
             }
         }
-    }
 }

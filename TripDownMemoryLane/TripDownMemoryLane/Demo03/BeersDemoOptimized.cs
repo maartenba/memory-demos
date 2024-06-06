@@ -1,12 +1,12 @@
 using System;
 
-namespace TripDownMemoryLane.Demo03
+namespace TripDownMemoryLane.Demo03;
+
+public class BeersDemoOptimized
+    : IDemo
 {
-    public class BeersDemoOptimized
-        : IDemo
+    public void Run(string[] args)
     {
-        public void Run(string[] args)
-        {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Loading beers!");
             Console.ResetColor();
@@ -26,5 +26,4 @@ namespace TripDownMemoryLane.Demo03
             Console.WriteLine("* Compare two snapshots: almost no traffic");
             Console.WriteLine("* Less work for GC, less pauses!");
         }
-    }
 }

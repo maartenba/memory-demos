@@ -1,4 +1,3 @@
-﻿namespace TripDownMemoryLane.Demo01
-{
-    public class Foo { }
-}
+﻿namespace TripDownMemoryLane.Demo01;
+
+public class Foo { }

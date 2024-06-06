@@ -1,7 +1,6 @@
-﻿namespace TripDownMemoryLane
+﻿namespace TripDownMemoryLane;
+
+public interface IDemo
 {
-    public interface IDemo
-    {
-        void Run(string[] args);
-    }
+    void Run(string[] args);
 }

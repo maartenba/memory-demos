@@ -1,12 +1,12 @@
 using System;
 
-namespace TripDownMemoryLane.Demo01
+namespace TripDownMemoryLane.Demo01;
+
+public class WeakReferenceDemo
+    : IDemo
 {
-    public class WeakReferenceDemo
-        : IDemo
+    public void Run(string[] args)
     {
-        public void Run(string[] args)
-        {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Weak references");
             Console.ResetColor();
@@ -39,5 +39,4 @@ namespace TripDownMemoryLane.Demo01
             // Collect another snapshot
             Console.WriteLine("Collect a snapshot, compare both snapshots. We should see new WeakReference<Data> being generated.");
         }
-    }
 }

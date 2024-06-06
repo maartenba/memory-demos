@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace TripDownMemoryLane.Demo01
+namespace TripDownMemoryLane.Demo01;
+
+public class DisposeObjectsDemo
+    : IDemo
 {
-    public class DisposeObjectsDemo
-        : IDemo
+    public void Run(string[] args)
     {
-        public void Run(string[] args)
-        {
             File.WriteAllText("disposeobjectsdemo.txt", "Hello.");
 
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -22,8 +22,8 @@ namespace TripDownMemoryLane.Demo01
             DemoDispose();
         }
 
-        private static void DemoDontDispose()
-        {
+    private static void DemoDontDispose()
+    {
             Console.WriteLine("Let's generate 10.000 objects and not dispose them. Let's show what happens when not disposing... (see SampleDisposable)");
 
             var disposables = new List<SampleDisposable>();
@@ -50,8 +50,8 @@ namespace TripDownMemoryLane.Demo01
             GC.Collect(1);
         }
 
-        private static void DemoDispose()
-        {
+    private static void DemoDispose()
+    {
             Console.WriteLine("Let's generate 10.000 objects and this time, dispose them.");
 
             var disposables = new List<SampleDisposable>();
@@ -74,5 +74,4 @@ namespace TripDownMemoryLane.Demo01
             Console.WriteLine("Collect a snapshot, and see if there are any SampleDisposable in memory. They should be gone now.");
             GC.Collect(0);
         }
-    }
 }

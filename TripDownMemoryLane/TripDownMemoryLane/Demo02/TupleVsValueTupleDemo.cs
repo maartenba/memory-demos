@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TripDownMemoryLane.Demo02
+namespace TripDownMemoryLane.Demo02;
+
+public class TupleVsValueTupleDemo : IDemo
 {
-    public class TupleVsValueTupleDemo : IDemo
+    public void Run(string[] args)
     {
-        public void Run(string[] args)
-        {
             var tuples = new List<Tuple<int, int>>();
             var valueTuples = new List<ValueTuple<int, int>>();
 
@@ -40,14 +40,13 @@ namespace TripDownMemoryLane.Demo02
             Console.WriteLine("* ValueTuple limited in available memory space");
         }
 
-        public Tuple<int, int> CreateTuple()
-        {
+    public Tuple<int, int> CreateTuple()
+    {
             return new Tuple<int, int>(123, 321);
         }
 
-        public (int, int) CreateValueTuple()
-        {
+    public (int, int) CreateValueTuple()
+    {
             return (123, 321);
         }
-    }
 }
