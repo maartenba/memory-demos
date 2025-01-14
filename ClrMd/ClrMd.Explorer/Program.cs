@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Xml;
 using ClrMd.Explorer.Graph;
@@ -16,11 +17,14 @@ class Program
 {
     static void Main(string[] args)
     {
+        // Start the ClrMd.Target process
+        var demoProcess = StartDemoProcess();
+
         // Give it a few seconds to run
         Thread.Sleep(TimeSpan.FromSeconds(2));
 
         // Get the ClrMd.Target process ID
-        var demoProcessId = GetDemoProcessId();
+        var demoProcessId = demoProcess?.Id ?? GetDemoProcessId();
 
         // Attach ClrMd to our process
         using (var dataTarget = DataTarget.AttachToProcess(demoProcessId, true)) // suspend, we want to explore the current state of the app
@@ -66,6 +70,18 @@ class Program
         catch
         {
         }
+    }
+
+    private static Process? StartDemoProcess()
+    {
+        if (!OperatingSystem.IsWindows()) return null;
+
+        // Start the ClrMd.Target process
+        var processStartInfo = new ProcessStartInfo(Assembly.GetExecutingAssembly().Location
+            .Replace("ClrMd.Explorer", "ClrMd.Target")
+            .Replace(".dll", ".exe"));
+
+        return Process.Start(processStartInfo);
     }
 
     private static int GetDemoProcessId()
