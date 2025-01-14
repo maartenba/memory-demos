@@ -7,7 +7,7 @@ namespace TripDownMemoryLane.Demo02;
 class Demo02_Random
 {
     // 1.
-    private static void BoxingRing()
+    private static void Boxing()
     {
         int i = 123;
 
@@ -24,7 +24,7 @@ class Demo02_Random
     // 2.
     private static void ParamsArray()
     {
-        // Note: also show .NET 4.5 target fx
+        // Note: uses empty enumerable in IL - older frameworks allocate a string[]
         ParamsArrayImpl();
     }
 

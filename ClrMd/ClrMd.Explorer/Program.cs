@@ -4,10 +4,9 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Xml;
-using ClrMd.Explorer.GeekOut;
+using ClrMd.Explorer.Graph;
 using Microsoft.Diagnostics.Runtime;
 
 namespace ClrMd.Explorer;
@@ -17,14 +16,14 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Start the ClrMd.Target process
-        var demoProcess = StartDemoProcess();
-
         // Give it a few seconds to run
         Thread.Sleep(TimeSpan.FromSeconds(2));
 
+        // Get the ClrMd.Target process ID
+        var demoProcessId = GetDemoProcessId();
+
         // Attach ClrMd to our process
-        using (var dataTarget = DataTarget.AttachToProcess(demoProcess.Id, true)) // suspend, we want to explore the current state of the app
+        using (var dataTarget = DataTarget.AttachToProcess(demoProcessId, true)) // suspend, we want to explore the current state of the app
         {
             // Get CLR version, runtime and appdomain
             var clrVersion = dataTarget.ClrVersions.First();
@@ -62,21 +61,19 @@ class Program
         // Kill demo process
         try
         {
-            demoProcess.Kill();
+            Process.GetProcessById(demoProcessId).Kill();
         }
         catch
         {
         }
     }
 
-    private static Process StartDemoProcess()
+    private static int GetDemoProcessId()
     {
-        // Start the ClrMd.Target process
-        var processStartInfo = new ProcessStartInfo(Assembly.GetExecutingAssembly().Location
-            .Replace("ClrMd.Explorer", "ClrMd.Target")
-            .Replace(".dll", ".exe"));
+        var targetProcess = Process.GetProcesses()
+            .FirstOrDefault(it => it.ProcessName.Contains("ClrMd.Target", StringComparison.OrdinalIgnoreCase));
 
-        return Process.Start(processStartInfo);
+        return targetProcess?.Id ?? 0;
     }
 
     private static void DumpClrInfo(DataTarget dataTarget, ClrInfo clrVersion, ClrRuntime runtime, ClrAppDomain appDomain)

@@ -53,9 +53,9 @@ public class StringAllocationDemo
 
     static void AllocateSomeStringDuplicatesWithInterning()
     {
-        var dummy = string.Intern("http://blog.maartenballiauw.be/");
+        var dummy = string.Intern("https://blog.maartenballiauw.be/");
 
-        var url = string.Intern("http://blog.maartenballiauw.be");
+        var url = string.Intern("https://blog.maartenballiauw.be");
 
         var stringList = new List<string>();
         for (int i = 0; i < 100; i++)
