@@ -21,7 +21,7 @@ class Program
         var demoProcess = StartDemoProcess();
 
         // Give it a few seconds to run
-        Thread.Sleep(TimeSpan.FromSeconds(2));
+        Thread.Sleep(TimeSpan.FromSeconds(8));
 
         // Get the ClrMd.Target process ID
         var demoProcessId = demoProcess?.Id ?? GetDemoProcessId();
