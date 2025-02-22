@@ -6,6 +6,7 @@ using TripDownMemoryLane.Demo01;
 using TripDownMemoryLane.Demo02;
 using TripDownMemoryLane.Demo03;
 using TripDownMemoryLane.Demo04;
+using TripDownMemoryLane.Demo05;
 
 var availableDemos = new Dictionary<string, Type[]>
 {
@@ -16,7 +17,8 @@ var availableDemos = new Dictionary<string, Type[]>
     {"3",   new[] {typeof(BeersDemoUnoptimized), typeof(BeersDemoOptimized)}},
     {"3-1", new[] {typeof(BeersDemoUnoptimized)}},
     {"3-2", new[] {typeof(BeersDemoOptimized)}},
-    {"4",   new[] {typeof(StringAllocationDemo)}}
+    {"4",   new[] {typeof(StringAllocationDemo)}},
+    {"5",   new[] {typeof(FrozenSegmentsDemo)}},
 };
 
 Console.WriteLine("Available demo's:");
